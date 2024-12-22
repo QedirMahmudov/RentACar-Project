@@ -1,0 +1,23 @@
+﻿﻿<h4>Create page</h4>
+<div class="container">
+    <div class="row">
+        <div class="col-8 m-auto">
+            <form asp-action="Add" enctype="multipart/form-data">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        CarImage Create
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="CarId" id="CarId" />
+
+                            <input class="form-control" accept="image/png, image/gif, image/jpeg" type="file" name="Photo" id="Photo" />
+                            <br />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" class="btn btn-primary" value="Submit" />
+                    </div>
+                </div>
+            </form>
+        </div>

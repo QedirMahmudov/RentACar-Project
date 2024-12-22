@@ -1,0 +1,19 @@
+﻿@using Entities.Concrete
+@model Car
+
+<div class="inputlar">
+    <form asp-controller="Car" asp-action="UpdateCar" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+        <input placeholder="CarBrand" asp-for="CarBrand" value="@Model.CarBrand">
+        <input placeholder="CarModel" asp-for="CarModel" value="@Model.CarModel">
+        <input placeholder="CarPrice" asp-for="CarPrice" value="@Model.CarPrice">
+        <input placeholder="Color" asp-for="Color" value="@Model.Color">
+        <input placeholder="CarKM" asp-for="CarKM" value="@Model.CarKM">
+        <input placeholder="CarYear" asp-for="CarYear" value="@Model.CarYear">
+        <input placeholder="transmissionType" asp-for="transmissionType" value="@Model.transmissionType">
+        <input placeholder="Fuel" asp-for="Fuel" value="@Model.Fuel">
+        <input placeholder="CC" asp-for="CC" value="@Model.CC">
+        <textarea placeholder="Description" asp-for="Description">@Model.Description</textarea>
+        <input placeholder="ImageUrl" type="file" asp-for="ImageUrl" value="@Model.ImageUrl">
+        <button>Edit</button>
+    </form>
+</div>

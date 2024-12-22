@@ -1,0 +1,94 @@
+﻿@using Entities.DTOs
+@model LoginDTO
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+form{
+    width:40%;
+    margin:150px auto;
+}
+h2{
+    text-align:center;
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+<form asp-controller="User" asp-action="Login" >
+<h2>Login Form</h2>
+  <div class="container">
+    <label><b>Username</b></label>
+            <input placeholder="Enter Email" asp-for="Email">
+            <span asp-validation-for="Email"></span>
+
+    <label><b>Password</b></label>
+    <input placeholder="Enter Password" asp-for="Password">
+            <span asp-validation-for="Password"></span>
+
+            <button type="submit">Login</button>
+  </div>
+</form>
+
+</body>
+</html>

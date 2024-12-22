@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.1.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
+    <PackageReference Include="Castle.Core" Version="5.1.1" />
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="8.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CrossCuttingConcern\Cashing\Redis\" />
+  </ItemGroup>
+
+</Project>

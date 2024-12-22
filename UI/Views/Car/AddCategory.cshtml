@@ -1,0 +1,9 @@
+﻿@using Entities.Concrete
+@model Category
+
+<div class="inputlar">
+    <form asp-controller="Car" asp-action="AddCategory" method="post">
+        <input placeholder="CategoryName" asp-for="CategoryName">
+        <button>Add</button>
+    </form>
+</div>

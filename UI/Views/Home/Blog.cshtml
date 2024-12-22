@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Entities.Concrete.Blog>
+<div class="hero inner-page" style="background-image: url('@Url.Content("~/images/hero_1_a.jpg")');">
+
+            <div class="container">
+                <div class="row align-items-end ">
+                    <div class="col-lg-5">
+
+                        <div class="intro">
+                            <h1><strong>Blog</strong></h1>
+                            <div class="custom-breadcrumbs"><a href="index.html">Home</a> <span class="mx-2">/</span> <strong>Blog</strong></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="site-section bg-light">
+            <div class="container">
+                <div class="row">
+                    
+
+                    @foreach (var blogs in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="post-entry-1 h-100">
+                        <a href="single.html">
+                            <img src="~/images/@blogs.ImageUrl" alt="Image"
+                                 class="img-fluid">
+                        </a>
+                        <div class="post-entry-1-contents">
+
+                            <h2><a href="single.html">@blogs.Title</a></h2>
+                            <span class="meta d-inline-block mb-3">@blogs.CreatedBy <span class="mx-2">by</span> <a href="#">Admin</a></span>
+                            <p>@blogs.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+                </div>
+
+        <nav aria-label="Page navigation example">
+            <ul style="margin:60px;" class="pagination justify-content-center">
+
+                @{
+                    int pg = !string.IsNullOrEmpty(@Context.Request.Query["page"]) ? int.Parse(@Context.Request.Query["page"]) : 0;
+                }
+                <li class="page-item @(pg==0? "disabled" : "")">
+                    <a class="page-link" href="?page=@(pg-1)" tabindex="-1">Previous</a>
+                </li>
+
+
+                @for (int i = 0; i < ViewBag.PageCount; i++)
+                {
+                    <li class="page-item @(pg==i ? "active" : "")"><a class="page-link" href="?page=@i">@(i + 1)</a></li>
+                }
+                <li class="page-item @(pg==ViewBag.PageCount-1? "disabled" : "")">
+                    <a class="page-link" href="?page=@(pg+1)">Next</a>
+                </li>
+
+                
+            </ul>
+        </nav>
+
+            </div>
+        </div>
+
+        <div class="site-section bg-primary py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-4 mb-md-0">
+                        <h2 class="mb-0 text-white">What are you waiting for?</h2>
+                        <p class="mb-0 opa-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                    </div>
+                    <div class="col-lg-5 text-md-right">
+                        <a href="#" class="btn btn-primary btn-white">Rent a car now</a>
+                    </div>
+                </div>
+            </div>
+        </div>

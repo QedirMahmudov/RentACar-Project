@@ -1,0 +1,25 @@
+﻿@using Entities.Concrete
+@model Car
+
+
+<div class="inputlar">
+    <form asp-controller="Car" asp-action="AddCar" method="post" enctype="multipart/form-data">
+        <input placeholder="CarBrand" asp-for="CarBrand">
+        <input placeholder="CarModel" asp-for="CarModel">
+
+        <select class="carCategory" id="carCategory" asp-for="CategoryId" asp-items="ViewBag.Category">
+                <option disabled selected value=" ">Category</option>
+        </select>
+
+        <input placeholder="CarPrice" asp-for="CarPrice">
+        <input placeholder="Color" asp-for="Color">
+        <input placeholder="CarKM" asp-for="CarKM">
+        <input placeholder="CarYear" asp-for="CarYear">
+        <input placeholder="transmissionType" asp-for="transmissionType">
+        <input placeholder="Fuel" asp-for="Fuel">
+        <input placeholder="CC" asp-for="CC">
+        <textarea placeholder="Description" asp-for ="Description"></textarea>
+        <input placeholder="ImageUrl" type="file" asp-for="ImageUrl ">
+        <button>Add</button>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+﻿@using Entities.Concrete
+@model Category
+
+<div class="inputlar">
+    <form asp-controller="Car" asp-action="UpdateCategory" asp-route-id="@Model.Id" method="post">
+        <select class="carCategory" id="carCategory" asp-for="CategoryName" asp-items="ViewBag.Category">
+            <select class="carCategory" id="carCategory" asp-for="Id" asp-items="ViewBag.Category">
+                <option disabled selected value=" ">Category</option>
+            </select>
+        </select>
+        <button type="submit">Edit</button>
+    </form>
+</div>

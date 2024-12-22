@@ -1,0 +1,167 @@
+﻿@using Entities.Concrete
+@model List<Car>
+
+<div class="hero inner-page" style="background-image: url('@Url.Content("~/images/hero_1_a.jpg")');">
+    <div class="container">
+        <div class="row align-items-end ">
+            <div class="col-lg-5">
+                <div class="intro">
+                    <h1><strong>Listings</strong></h1>
+                    <div class="custom-breadcrumbs"><a href="index.html">Home</a> <span class="mx-2">/</span> <strong>Listings</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="site-section bg-light">
+    <div class="container">
+        <form method="get" action="/Car/Filter">
+            <div class="filters">
+                @* <label for="carCategory">Brand:</label>
+                <select class="carBrand" id="carBrand" name="carBrand">
+                <option value="0" disabled selected>Brand:</option>
+                @foreach (var carBrand in ViewBag.Brand)
+                {
+                <option value="@carBrand.Id">@carBrand.CarBrand</option>
+                }
+                </select> *@
+
+
+
+                <label for="carCategory">Category:</label>
+                <select class="carCategory" id="carCategory" name="carCategory">
+                    <option value="0" selected>All</option>
+                    @foreach (var carCategory in ViewBag.Category)
+                    {
+                        <option value="@carCategory.Id">@carCategory.CategoryName</option>
+                    }
+                </select>
+
+
+                <button type="button" id="filterButton" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-lg-7">
+                <h2 class="section-heading"><strong>Car Listings</strong></h2>
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div cat="@item.CategoryId" class="item col-md-6 col-lg-4 mb-4">
+                    <div class="listing d-block align-items-stretch">
+                        <div class="listing-img h-100 mr-4">
+                            <img src="~/images/carimg/@item.ImageUrl" alt="Image" class="img-fluid">
+                        </div>
+                        <div class="listing-contents h-100">
+                            <h3>@item.CarBrand @item.CarModel</h3>
+                            <div class="rent-price">
+                                <strong>@item.CarPrice</strong><span class="mx-1">/</span>day
+                            </div>
+                            <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Luggage:</span>
+                                    <span class="number">8</span>
+                                </div>
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Doors:</span>
+                                    <span class="number">4</span>
+                                </div>
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Passenger:</span>
+                                    <span class="number">4</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>@item.Description</p>
+                                <p><a href="/Car/RentNow/@item.Id" class="btn btn-primary btn-sm">Rent Now</a></p>
+                                <p><a href="/Car/DeleteCar/@item.Id" class="btn btn-primary btn-sm">Delete</a></p>
+                                <p><a href="/Car/UpdateCar/@item.Id" class="btn btn-primary btn-sm">Update</a></p>
+                                <p><a href="/Car/UpdateCategory/@item.CategoryId" class="btn btn-primary btn-sm">Update Category</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <ul style="margin:60px;" class="pagination justify-content-center">
+
+                @{
+                    int pg = !string.IsNullOrEmpty(@Context.Request.Query["page"]) ? int.Parse(@Context.Request.Query["page"]) : 0;
+                }
+                <li class="page-item @(pg==0? "disabled" : "")">
+                    <a class="page-link" href="?page=@(pg-1)" tabindex="-1">Previous</a>
+                </li>
+
+
+                @for (int i = 0; i < ViewBag.PageCount; i++)
+                {
+                    <li class="page-item @(pg==i ? "active" : "")"><a class="page-link" href="?page=@i">@(i + 1)</a></li>
+                }
+                <li class="page-item @(pg==ViewBag.PageCount-1? "disabled" : "")">
+                    <a class="page-link" href="?page=@(pg+1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        
+
+    </div>
+
+</div>
+<script>
+
+    
+    // $("#filterButton").click(function () {
+    //     var selectedCarBrandId = $("#carBrand").val();
+    //     var selectedCategoryId = $("#carCategory").val();
+    //     $(".row .item").each(function () {
+    //         var itemBrandId = $(this).attr("data-brand-id");
+    //         var itemCategoryId = $(this).attr("data-category-id"); 
+    //         var showItem = true; 
+    //         if (selectedCarBrandId !== "0") {
+    //             if (itemBrandId !== selectedCarBrandId) {
+    //                 showItem = false; 
+    //             }
+    //         }
+    //         if (selectedCategoryId !== "0") {
+    //             if (itemCategoryId !== selectedCategoryId) {
+    //                 showItem = false; 
+    //             }
+    //         }
+    //         if (showItem) {
+    //             $(this).show();
+    //         } else {
+    //             $(this).hide();
+    //         }
+    //     });
+    // });
+
+
+    $("#filterButton").click(function () {
+        var selectedCategoryId = $("#carCategory").val();
+        $(".row .item").each(function () {
+            if (selectedCategoryId == 0) {
+                $(this).show(); 
+            } else if ($(this).attr("cat") == selectedCategoryId) {
+                $(this).show(); 
+            } else {
+                $(this).hide(); 
+            }
+        });
+    });
+
+</script>
+
+
+

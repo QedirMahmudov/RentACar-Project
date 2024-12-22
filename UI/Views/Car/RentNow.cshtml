@@ -1,0 +1,26 @@
+﻿@using Entities.Concrete
+@model Car
+<div class="car-details">
+    <div class="car-image">
+        <img src="~/images/carimg/@Model.ImageUrl" alt="Car Image">
+    </div>
+
+    <div class="car-main-info">
+        <h1>@Model.CarBrand @Model.CarModel (@Model.CarYear)</h1>
+        <p><strong>Price(Daily):</strong> $@Model.CarPrice</p>
+        <p><strong>KM:</strong> @Model.CarKM km</p>
+        <p><strong>Fuel:</strong> @Model.Fuel</p>
+        <p><strong>Transmission:</strong> @Model.transmissionType</p>
+        <p><strong>Engine CC:</strong> @Model.CC cc</p>
+        <p><strong>Color:</strong> @Model.Color</p>
+
+        <div class="rent-now">
+            <a href="javascript:void(0);" class="btn btn-primary" id="rentNowBtn">Rent Now</a>
+        </div>
+    </div>
+
+    <div class="car-description">
+        <h3>About the Car</h3>
+        <p>@Model.Description</p>
+    </div>
+</div>
